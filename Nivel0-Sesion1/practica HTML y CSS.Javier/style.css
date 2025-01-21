@@ -1,0 +1,43 @@
+body{
+    background-color: #393c4e;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+div.container {
+    background-color: #ebebeb;
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+}
+div.inner{
+    justify-content: center;
+    display: flex;
+    background-color: #278bdf;
+    color:white;
+    font-size: 15px;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+input {
+    padding: 10px;
+}
+
+button {
+    background-color: #278bdf;
+    width: 100%;
+    padding: 15px;
+    color: white;
+    cursor: pointer;
+    border: none;
+    font-weight: bold;
+}

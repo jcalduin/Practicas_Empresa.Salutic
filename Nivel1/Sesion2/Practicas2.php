@@ -82,7 +82,8 @@
             <p class="card-text">
                 <?php 
                     $suma = 0;
-                    for ($i=1; $i <=1000 ; $i++) { 
+                    $limite = 1000;
+                    for ($i=1; $i <=$limite ; $i++) { 
                        if ($i%2 == 0) {
                         $suma+=$i;
                        }
@@ -116,7 +117,7 @@
                             echo "Ninguno de los números es resultado de la suma entre los otros dos";
                         }
                     }
-                    magic_method(10,3,4);
+                    magic_method(5,3,8);
 
                 ?> 
             
@@ -133,7 +134,24 @@
 
             <hr>
             <p class="card-text">
+                <form action="" method="GET"> <!-- el atributo action esta vacio se envian los datos a la misma pagina donde se encuentra el form -->
+                    <input type="number" name="number1" id="number1" placeholder="Introduce un nº" required>
+                    <input type="number" name="number2" id="number2" placeholder="Introduce un nº" required>
+                    <input type="submit">
+                </form>
+                
                 <?php 
+                    
+                    $num1 = $_GET["number1"]; //lo que hay dentro de los corchetes hace referencia al name del input, es recomendable poner diferentes names
+                    $num2 = $_GET["number2"]; //si pongo mas de un name igual los datos se sobreescribe, en este caso solo se recibiria el ultimo valor que metemos en el input
+                    
+                    if ($num1 > $num2) {
+                        echo "El número mayor es: $num1";
+                    } elseif ($num1 < $num2) {
+                         echo "El número mayor es: $num2";
+                    } else {
+                         echo "Los números son iguales: $num1";
+                    }
                     
                 ?> 
             

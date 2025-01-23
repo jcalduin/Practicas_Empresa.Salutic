@@ -141,18 +141,19 @@
                 </form>
                 
                 <?php 
+                    if (isset($_GET["number1"]) && isset($_GET["number2"])) { //isset es una funcion de PHP que se usa para comprobar que los campos esten no esten vacios (no sean null) y asi poder usarla.
                     
-                    $num1 = $_GET["number1"]; //lo que hay dentro de los corchetes hace referencia al name del input, es recomendable poner diferentes names
-                    $num2 = $_GET["number2"]; //si pongo mas de un name igual los datos se sobreescribe, en este caso solo se recibiria el ultimo valor que metemos en el input
-                    
-                    if ($num1 > $num2) {
-                        echo "El número mayor es: $num1";
-                    } elseif ($num1 < $num2) {
-                         echo "El número mayor es: $num2";
-                    } else {
-                         echo "Los números son iguales: $num1";
+                        $num1 = $_GET["number1"]; //lo que hay dentro de los corchetes hace referencia al name del input, es recomendable poner diferentes names
+                        $num2 = $_GET["number2"]; //si pongo mas de un name igual los datos se sobreescribe, en este caso solo se recibiria el ultimo valor que metemos en el input
+                        
+                        if ($num1 > $num2) {
+                            echo "El número mayor es: $num1";
+                        } elseif ($num1 < $num2) {
+                            echo "El número mayor es: $num2";
+                        } else {
+                            echo "Los números son iguales: $num1";
+                        }
                     }
-                    
                 ?> 
             
             </p>
@@ -169,8 +170,19 @@
 
             <hr>
             <p class="card-text">
+                <form action="" method="POST">
+                    <input type="text" name="cadenaTexto" id="cadenaTexto" placeholder="Escribe 4 palabras" required>
+                    <button type="submit">Enviar</button>
+                </form>
                 <?php 
-                   
+                    if ($_SERVER["REQUEST_METHOD"] == "POST"){ //$_SERVER es una variable global tipo array al cual se le pasa el indice REQUEST_METHOD que indica como fue enviada. En este caso si la solicitud enviada fue por el metodo POST continua haciebdo el resto de tareas
+                        $cadenaTexto = $_POST["cadenaTexto"];
+                        $array = explode(",",$cadenaTexto); //detecta la separacion que le indicamos y divide la cadena de texto obteniendo elementos por separado
+                        echo var_dump($array);
+                        // $array = str_getcsv($cadenaTexto); Si la cadena que nos introducen ya esta separada por comas lo convierte en un array por cada separacion
+                        //$array = str_split($cadenaTexto, 5); Divide la cadena por le parametro indicado dentro de la funcion(en este caso 5)
+                        //$array = preg_split("/(?=[A-Z])/", $cadenaTexto); Divide la cadena de texto dada una expresion y la separa segun esta, en este caso hemos indicado que la separación sea por mayusculas en un rango de la A a la Z
+                    }    
                 ?> 
             
             </p>

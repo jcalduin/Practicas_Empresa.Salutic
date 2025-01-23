@@ -21,7 +21,7 @@
             <p class="card-text">
                 <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
                     <label for="nombre">Nombre</label>
-                    <!-- COMPLETAR AQUI -->
+                    <input type="text" class="form-control" name="nombre">
                     <label for="email">Email</label>
                     <input type="email" class="form-control" name="email">
                     <hr>
@@ -29,10 +29,10 @@
                 </form>
                 <hr>
                 <div class="alert alert-secondary" role="alert">
-                    Tu nombre es: <?php //COMPLETAR AQUI ?><br>
+                    Tu nombre es: <?php echo $_POST["nombre"]; ?><br>
                 </div>
                 <div class="alert alert-secondary" role="alert">
-                    Tu email es: <?php //COMPLETAR AQUI ?>
+                    Tu email es: <?php echo $_POST["email"]; ?>
                 </div>
                 
             </p>

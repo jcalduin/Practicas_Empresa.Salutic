@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+l<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -40,11 +40,25 @@
                         <p class="card-text">
                             <hr>
                             <form>
-                                <!-- BEGIN BORRADO -->    
-                                Aqui deben ir 3 inputs para introducir los siguientes datos :<br>
-                                Nombre , Apellidos , Direccion<br>
-                                Un select que llenaremos apoyandonos en PHP con los numeros del 18 al 90<br>
-                                <!-- END BORRADO -->
+                                <form>
+                                <label for ="nombre">Nombre</label>
+                                <input type="text" class="form-control" id="id_nombre" name="nombre">
+                                
+                                <label for="apellidos">Apellidos</label>
+                                <input tyoe="text" class="form-control" id="id_apellido" name="apellidos">
+
+                                <label for="direccion">Dirección</label>
+                                <input type="text" class="form-control" id="id_direccion" name="direccion">
+
+                                <label for="edad">Edad</label>
+                                <select class="custom-select" id="id_edad" name="edad">
+                                    <?php
+                                        for ($i = 18; $i <= 90  ; $i++)  
+                                            echo "<option value ='$i'>$i</option>"; 
+                                    ?>
+                               
+                                </select>
+                                </form>
                                 <hr>
                                 <input type="button" class="btn btn-primary" onclick="procesaDatos()" value="Enviar Datos" >
                             </form>

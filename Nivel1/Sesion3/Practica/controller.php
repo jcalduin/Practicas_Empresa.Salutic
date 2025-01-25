@@ -2,12 +2,14 @@
 
 $params = (object) $_POST;
 
-// Procesar los datos que tenemos en $params para cumplir los requisitos pedidos en la practica y 
-// meterlos en un array llamado $data
 $success = true;
 $message = 'Se han procesado los datos correctamente';
-$data = array();
+$nombreCompleto = $params-> nombre . " " . $params->apellido;
+$direccion = strtolower($params->direccion);
+$edad = date('Y') - $params->edad;
+$data = array('nombreCompleto' => $nombreCompleto, 'direccion' => $direccion, 'edad' => $edad);
 
 
-// Devolver la variable $response para poder mostrar los datos desde el metodo ajax que llamo a este fichero
+
 $response = Array('success' => $success, 'message' => $message, 'data' => $data);
+echo json_encode($response);

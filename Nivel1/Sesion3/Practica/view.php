@@ -60,6 +60,7 @@ l<!DOCTYPE html>
                                 </select>
                                 </form>
                                 <hr>
+                                <!-- La funcion procesaDatos es una función previamente creada en el archivo functions de la carpeta js. onclick llama a la funcion que se dispara en el momento que se pulsa sobre este -->
                                 <input type="button" class="btn btn-primary" onclick="procesaDatos()" value="Enviar Datos" >
                             </form>
                             <hr>                

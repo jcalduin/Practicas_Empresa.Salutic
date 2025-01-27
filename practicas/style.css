@@ -1,0 +1,130 @@
+body{
+    margin:0;
+    padding:0;
+}
+
+section#contacto {
+    text-align:center;
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items:center;
+    padding: 30px;
+    font-family: "Kanit", sans-serif;
+    gap: 40px;
+}
+  
+section#contacto form {
+    display:flex;
+    flex-direction:column;
+    gap: 25px;
+    text-align: left;
+    border: inset 3px black;
+    padding: 15px;
+}
+  
+section#contacto form label{
+    display: inline-block;
+    width: 200px;
+    font-size: 20px;
+    color:#F25041;
+}
+  
+section#contacto form input {
+    padding: 5px;
+    font-size: 14px;
+    border-radius: 5px;
+    background-color: #91E9F2;
+}
+  
+section#contacto h2 {
+    font-size: 50px;
+    color:#5852F2;
+    margin: 5px;
+}
+  
+section#contacto p{
+    font-size:30px;
+    margin-bottom: 15px;
+    color:#F25041;
+}
+  
+section#contacto form div.boton{
+    text-align:center;
+    margin:10px;
+}
+  
+section#contacto form div select{
+    padding: 7px;
+    border-radius:5px;
+    background-color: #91E9F2;
+}
+  
+section#contacto form div textarea{
+    width:470px;
+    height:100px;
+    border-radius:5px;
+    background-color: #91E9F2;
+}
+ 
+section#contacto form input:focus {
+    transform: scale(1.1);
+    box-shadow: 0px 0px 15px #F2B441;
+}
+
+section#contacto form textarea:focus {
+    transform: scale(1.05);
+    box-shadow: 0px 0px 15px #F2B441;
+}
+ 
+section#contacto form div select:focus{
+     transform: scale(1.05);
+     box-shadow: 0px 0px 15px #F2B441;
+}
+
+section#contacto form div.boton button {
+    text-decoration:none;
+    border-radius: 7px;
+    padding:10px 20px;
+    color:#F0F0F2;
+    font-size:20px;
+    background-color:rgba(242, 80, 65, 0.650);
+}
+  
+section#contacto form div.boton button:hover {
+    background-color:rgba(242, 180, 65,0.800);
+    transform: scale(1.25);
+    box-shadow: 0px 0px 15px #91E9F2;
+}
+
+section#contacto div#confirmacion {
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    text-align: center;
+    padding: 15px;
+}
+
+section#contacto div#confirmacion h3 {
+    font-size: 25px;
+    color:#5852F2;
+    margin: 5px;
+}
+
+section#contacto div#confirmacion div {
+    border: dotted 2px #91E9F2;
+    text-align: left;
+}
+
+section#contacto div#confirmacion div p {
+    font-size: 13px;
+    color: black;
+    margin: 10px;
+}
+
+section#contacto div#confirmacion div p span {
+    font-weight: bold;
+    font-size: 15px;
+}

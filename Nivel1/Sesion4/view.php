@@ -84,7 +84,7 @@
                                     </div>
                                 </div>
 
-                                <input type="button" class="btn btn-primary" value="Enviar Datos" >
+                                <input type="button" class="btn btn-primary" value="Enviar Datos" onclick="procesaDatos()">
                             </form>
                             <hr>                
                         </p>
@@ -105,7 +105,7 @@
 
                     <div class="alert alert-secondary" role="alert">
                         City + Zip formateada :
-                        <span id="birthday"></span>
+                        <span id="zip_formateada"></span>
                     </div>
                 </div>
             </div>  

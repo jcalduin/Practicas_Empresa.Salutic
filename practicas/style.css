@@ -97,7 +97,7 @@ section#contacto form div.boton button:hover {
     box-shadow: 0px 0px 15px #91E9F2;
 }
 
-section#contacto div#confirmacion {
+section#contacto div#respuesta {
     display:flex;
     flex-direction:column;
     justify-content: center;
@@ -107,24 +107,45 @@ section#contacto div#confirmacion {
     padding: 15px;
 }
 
-section#contacto div#confirmacion h3 {
+section#contacto div#respuesta h3 {
     font-size: 25px;
     color:#5852F2;
     margin: 5px;
 }
 
-section#contacto div#confirmacion div {
-    border: dotted 2px #91E9F2;
+section#contacto div#respuesta div#confirmacion {
     text-align: left;
+    transition: 1s;
+    height: 0;
+    overflow: hidden;
 }
 
-section#contacto div#confirmacion div p {
+section#contacto div#respuesta div#confirmacion.oculto {
+    height: 300px;
+    border: dotted 2px #91E9F2;
+}
+
+section#contacto div#respuesta div#confirmacion p {
     font-size: 13px;
     color: black;
     margin: 10px;
 }
 
-section#contacto div#confirmacion div p span {
+section#contacto div#respuesta div#confirmacion p span {
     font-weight: bold;
     font-size: 15px;
+}
+
+section#contacto div#respuesta button#mostrar {
+    border-radius: 7px;
+    padding:5px 10px;
+    color:#F0F0F2;
+    font-size:15px;
+    background-color:rgba(242, 80, 65, 0.650);
+}
+
+section#contacto div#respuesta button#mostrar:hover {
+    background-color:rgba(242, 180, 65,0.800);
+    transform: scale(1.25);
+    box-shadow: 0px 0px 15px #91E9F2;
 }

@@ -50,17 +50,18 @@
                 <button type="button" onclick="procesaDatos()">Solicite su cita</button>
             </div>
         </form>
-        <div id="confirmacion">
-            <h3>Confirmación cita</h3>
-            <div>
+        <div id="respuesta">
+            <div id="confirmacion">
+                <h3>Confirmación cita</h3>
                 <p>Empresa: <span id="empresa_confirmacion"></span></p>
-                <p>Cita confirmada para el dia <span id="dia_confirmacion"></span><span id="mes_confirmacion"></span> de <span id="anho_confirmacion"></span> a las: <span id="hora_confirmacion"></span><br>
+                <p>Cita confirmada para el dia <span id="dia_confirmacion"></span> de <span id="mes_confirmacion"></span> de <span id="anio_confirmacion"></span> a las: <span id="hora_confirmacion"></span>:<span id="minuto_confirmacion"></span><br>
                 Modalidad: <span id="modalidad_confirmacion"></span><br>
                 Solicita información sobre: <span id="servicio_confirmacion"></span><br>
                 Información adicional: <span id="info_confirmacion"></span></p>
                 <p>Le hemos enviado un correo de confirmación a:<br><span id="correo_confirmacion"></span></p>
-                <p>Gracias,<span id="nombre_confirmacion"></span> le esperamos.</p>
+                <p>Gracias <span id="nombre_confirmacion"></span>, le esperamos.</p>
             </div>
+            <button type="button" id="mostrar">Mostrar confirmación</button>
         </div>
     </section>
 </body>

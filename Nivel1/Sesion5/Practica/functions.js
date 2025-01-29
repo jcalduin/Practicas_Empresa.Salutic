@@ -1,12 +1,22 @@
 function init() {
-    setupEventListeners();
+   // setupEventListeners();
     loadUsers();
 }
 
-function setupEventListeners(){
+/*function setupEventListeners(){
     // Establecer los eventos de nuestro boton Registrar usuario para que llame a la funcion
     // registerUser , que se encargara de hacer la peticion ajax para insertar un nuevo registro
-}
+}*/
+
+var entradaDatos = {
+    inputNick: "nick",
+    inputEmail: "email",
+    inputPassword: "password",
+    inputName: "nombre",
+    inputAddress: "direccion",
+    inputPhoneNumber: "phone",
+    inputDNI: "dni"
+};
 
 function loadUsers() {
     // Aqui crearemos la peticion ajax para listar los usuarios que tengamos en la tabla de la bd
@@ -26,12 +36,53 @@ function loadUsers() {
 }
 
 function registerUser() {
-    // Aqui crearemos la peticion ajax para insertar un nuevo usuario en la BD
+
+    entradaDatos.nick = document.getElementById('inputNick').value;
+    entradaDatos.email = document.getElementById('inputEmail').value;
+    entradaDatos.password = document.getElementById('inputPassword').value;
+    entradaDatos.nombre = document.getElementById('inputName').value;
+    entradaDatos.direccion = document.getElementById('inputAddress').value;
+    entradaDatos.phone = document.getElementById('inputPhoneNumber').value;
+    entradaDatos.dni = document.getElementById('inputDNI').value;
+   
+    data = {serviceType: 'register_user', data: entradaDatos};
+    if (entradaDatos.nick == "" || entradaDatos.email == "" || entradaDatos.password == "" || entradaDatos.nombre == "" || entradaDatos.direccion == "" || entradaDatos.phone == "" || entradaDatos.dni == "") {
+        swal ( {
+            text: "Por favor, rellene todos los campos.",
+            icon: "error",
+            button: "Ok"
+        });
+        return false;
+    }
+    
+    $.ajax({
+        type: "POST",
+        url: "controllers/UsersController.php",
+        data: data,
+        dataType: "json",
+        success: function (response){
+            swal({
+                text: response.message,
+                icon : "info",
+                button: "Ok"
+            });
+            if (response.success){
+                cleanInputs();
+                loadUsers();
+            }
+        }
+    })
+    
 }
 
 function cleanInputs() {
-    // Esta funcion la llamaremos cuando hallamos insertado correctamente un usuario en la BD
-    // Se encargar de vaciar todos los inputs del formulario.
+    document.getElementById('inputNick').value = "";
+    document.getElementById("inputEmail").value = "";
+    document.getElementById("inputPassword").value = "";
+    document.getElementById("inputName").value = "";
+    document.getElementById("inputAddress").value = "";
+    document.getElementById("inputPhoneNumber").value = "";
+    document.getElementById("inputDNI").value = "";
 }
 
 

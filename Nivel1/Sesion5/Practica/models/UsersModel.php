@@ -4,9 +4,7 @@ class UsersModel {
     
     private $table = "users";
     private $fields = array(
-        /*
-            COMPLETAR este array con los campos de la tabla users que hallamos creado.
-        */ 
+        "IDUser","name","nick","password","address","phoneNumber","dni"
     );
     
     private $db_instance;   
@@ -25,10 +23,12 @@ class UsersModel {
     }
     
     function _insNewUser($params) {
-        /*
-            COMPLETAR esta funcion para que nos inserte un nuevo registro en nuestra tabla users
-            con los datos que recibimos como parametros($params)
-        */ 
+        if (!isset($this->db_instance)) {return null;}
+
+        $sql = "INSERT INTO {$this->table} (".implode(",",$this->fields).")";
+        $sql .= "VALUES (null,'$params->nombre','$params->nick','$params->password','$params->address','$params->phone','$params->dni')";
+
+        return $this->db_instance->execSQL($sql);
         
     }
 

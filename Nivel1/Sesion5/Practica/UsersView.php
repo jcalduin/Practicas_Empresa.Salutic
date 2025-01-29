@@ -74,7 +74,7 @@
                                 </div>
 
 
-                                <input type="button" class="btn btn-primary float-right miboton" value="Registrar Usuario">
+                                <input type="button" class="btn btn-primary float-right miboton" value="Registrar Usuario" onclick="registerUser()">
                             </form>               
                         </p>
                 </div>
@@ -96,6 +96,7 @@
 
 <!-- FOOTER , links a JS -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="functions.js" type="text/javascript"></script>
 
 </html>

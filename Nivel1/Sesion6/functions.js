@@ -1,12 +1,46 @@
 function init() {
-   // setupEventListeners();
     loadUsers();
 }
 
-/*function setupEventListeners(){
-    // Establecer los eventos de nuestro boton Registrar usuario para que llame a la funcion
-    // registerUser , que se encargara de hacer la peticion ajax para insertar un nuevo registro
-}*/
+function setupEventListenersResults(){
+    
+    $(".view-button").on('click',function() {
+        console.log("askdjsha")  
+        var id = $(this).closest('tr').data('id');
+        alert(`El Id de esta fila es ${id} , tenemos que abrir modal para VER datos`); 
+            //aqui abrir modal
+    });
+
+    $(".edit-button").on('click',function() {
+        var id = $(this).closest('tr').data('id');
+        alert(`El Id de esta fila es ${id} , tenemos que abrir modal para EDITAR datos`);
+    });
+
+    $(".delete-button").on('click',function() {
+        var id = $(this).closest('tr').data('id');
+
+        swal({
+            title: 'Desea continuar?',
+            text: `Se va borrar el registro con ID: ${id}`,
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si, borrarlo',
+            cancelButtonText: 'Cancelar'
+        }).then(function (result) {
+            if (result.value) {
+              swal(
+                'Peticion AJAX',
+                'Lanzamos peticion AJAX de borrado',
+                'success'
+              )
+            }
+          })
+               
+    });
+       
+}
 
 var entradaDatos = {
     inputNick: "nick",
@@ -31,6 +65,7 @@ function loadUsers() {
         dataType: 'json',
         success: function (r) {
             renderTableUsers(r);
+            setupEventListenersResults();
         }
     });
 }
@@ -102,6 +137,7 @@ function renderTableUsers(resultSet){
     html += '<th scope="col">Id</th>';
     html += '<th scope="col">Nick</th>';
     html += '<th scope="col">Phone Numb.</th>';
+    html += '<th scope="col">Ver</th>';
     html += '<th scope="col">Editar</th>';
     html += '<th scope="col">Borrar</th>';
     html += '</tr></thead>';
@@ -109,10 +145,11 @@ function renderTableUsers(resultSet){
     
     for (let key in resultSet) {
         let row = resultSet[key];
-        html += '<tr>';
+        html += '<tr data-id="' + row.IDUser + '">'; // Aqui guardamos el ID del usuario en el atributo data-id del tr
         html += `<td>${row.IDUser}</td>`;
         html += `<td>${row.nick}</td>`;
         html += `<td>${row.phoneNumber}</td>`;
+        html += `<td><i class="fa fa-eye view-color clickable view-button"></i></td>`;
         html += `<td>..Proximamente..</td>`;
         html += `<td>..Proximamente..</td>`;
         html += '</tr>';

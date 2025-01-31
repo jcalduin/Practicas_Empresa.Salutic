@@ -30,11 +30,21 @@ class UsersController {
             case 'delete-user':
             $this->deleteUser();
             break;
+            case 'load_user':
+                $this->loadUser();
+            break;
         }
     }
 
     function loadUsers() {
         $result = $this->model->_getAll();
+        $res_arr = $this->db->processResult($result);
+        
+        echo json_encode($res_arr);
+    }
+
+    function loadUser() {
+        $result = $this->model->_getUser($this->params);
         $res_arr = $this->db->processResult($result);
         
         echo json_encode($res_arr);

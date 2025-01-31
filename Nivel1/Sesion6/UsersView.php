@@ -14,22 +14,7 @@
     -->
     <link href="styles.css" rel="stylesheet" type="text/css"/>
 </head>
-<body>
-
-<div class="row">
-<div class="col-md-2"></div>
-                <div class="col-md-4">
-<div class="card" style="width: 18rem;">
-  <img class="card-img-top" src=".../100px180/" alt="Card image cap">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
-</div>
-</div>
-    
+<body> 
     <div class="card">
         <div class="card-header">
         <h5 class="card-title font-weight-bold">Practica Acceso BD #1</h5>
@@ -93,6 +78,8 @@
                         </p>
                 </div>
 
+               
+
                 <div class="col-md-8">
                     <h5 class="card-title font-weight-bold">Listado de Usuarios</h5>
                     <div id="render-table-users">
@@ -104,13 +91,53 @@
         </div>
 
 
-      </div>
+    </div>
+    <div class="modal" id="modalView" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Título dinámico</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <span id="contenidoModalView"></span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="modalEdit" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Título dinámico</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <span id="contenidoModalEdit"></span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary">Guardar Cambios</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 </body>
 
 <!-- FOOTER , links a JS -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 <script src="functions.js" type="text/javascript"></script>
 
 </html>

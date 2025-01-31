@@ -5,15 +5,13 @@ function init() {
 function setupEventListenersResults(){
     
     $(".view-button").on('click',function() {
-        console.log("askdjsha")  
         var id = $(this).closest('tr').data('id');
-        alert(`El Id de esta fila es ${id} , tenemos que abrir modal para VER datos`); 
-            //aqui abrir modal
+        loadUser(id);
     });
 
     $(".edit-button").on('click',function() {
         var id = $(this).closest('tr').data('id');
-        alert(`El Id de esta fila es ${id} , tenemos que abrir modal para EDITAR datos`);
+        editUser(id);
     });
 
     $(".delete-button").on('click',function() {
@@ -52,6 +50,28 @@ var entradaDatos = {
     inputDNI: "dni"
 };
 
+function editUser(id) {
+    // Aqui crearemos la peticion ajax para listar los usuarios que tengamos en la tabla de la bd
+   
+    var data = {
+        serviceType: 'load_user',
+        id: id
+    };
+    
+    $.ajax({
+        type: 'POST',
+        url: 'controllers/UsersController.php',
+        data: data,
+        dataType: 'json',
+        success: function (r) {
+            $('#modalEdit').modal();
+            renderTableEditUser(r);
+        }
+    });
+}
+
+
+
 function loadUsers() {
     // Aqui crearemos la peticion ajax para listar los usuarios que tengamos en la tabla de la bd
     var data = {
@@ -66,6 +86,26 @@ function loadUsers() {
         success: function (r) {
             renderTableUsers(r);
             setupEventListenersResults();
+        }
+    });
+}
+
+function loadUser(id) {
+    // Aqui crearemos la peticion ajax para listar los usuarios que tengamos en la tabla de la bd
+   
+    var data = {
+        serviceType: 'load_user',
+        id: id
+    };
+    
+    $.ajax({
+        type: 'POST',
+        url: 'controllers/UsersController.php',
+        data: data,
+        dataType: 'json',
+        success: function (r) {
+            $('#modalView').modal();
+            renderTableUser(r);
         }
     });
 }
@@ -150,8 +190,8 @@ function renderTableUsers(resultSet){
         html += `<td>${row.nick}</td>`;
         html += `<td>${row.phoneNumber}</td>`;
         html += `<td><i class="fa fa-eye view-color clickable view-button"></i></td>`;
-        html += `<td>..Proximamente..</td>`;
-        html += `<td>..Proximamente..</td>`;
+        html += `<td><i class="fa fa-edit edit-color clickable edit-button"></i></td>`;
+        html += `<td><i class="fa fa-trash-alt delete-color clickable delete-button"></i></td>`;
         html += '</tr>';
     }
     
@@ -162,6 +202,60 @@ function renderTableUsers(resultSet){
     document.querySelector('#render-table-users').innerHTML = html;
 }
 
+function renderTableUser(r) {
+    let row = r[0];
+
+    let html = '<table class="table table-striped mg-top-4">';
+    html += '<thead><tr>';
+    html += '<th scope="col">Id</th>';
+    html += '<th scope="col">Nombre</th>';
+    html += '<th scope="col">Nick</th>';
+    html += '<th scope="col">Email</th>';
+    html += '<th scope="col">Direccion</th>';
+    html += '<th scope="col">Phone Numb.</th>';
+    html += '<th scope="col">DNI</th>';
+    html += '</tr></thead>';
+    html += '<tbody>';
+
+    html += '<tr>';
+    html += `<td>${row.IDUser}</td>`;
+    html += `<td>${row.name}</td>`;
+    html += `<td>${row.nick}</td>`;
+    html += `<td>${row.email}</td>`;
+    html += `<td>${row.address}</td>`;
+    html += `<td>${row.phoneNumber}</td>`;
+    html += `<td>${row.dni}</td>`;
+    html += '</tr>';
+
+    html += '</tbody></table>'; 
+    document.querySelector('#contenidoModalView').innerHTML = html;
+}
+
+function renderTableEditUser(r) {
+    let row = r[0];
+
+    let html = '<table class="table table-striped mg-top-4">';
+    html += '<thead><tr>';
+    html += '<th scope="col">Id</th>';
+    html += '<th scope="col">Nombre</th>';
+    html += '<th scope="col">Email</th>';
+    html += '<th scope="col">Direccion</th>';
+    html += '<th scope="col">Phone Numb.</th>';
+    html += '</tr></thead>';
+    html += '<tbody>';
+
+    html += '<tr>';
+    html += `<td>${row.IDUser}</td>`;
+    html += `<td><input type="text" value="${row.name}" class="form-control"></td>`;
+    html += `<td><input type="text" value="${row.email}" class="form-control"></td>`;
+    html += `<td><input type="text" value="${row.address}" class="form-control"></td>`;
+    html += `<td><input type="text" value="${row.phoneNumber}" class="form-control"></td>`;
+    html += '</tr>';
+
+
+    html += '</tbody></table>';
+    document.querySelector('#contenidoModalEdit').innerHTML = html; 
+}
 
 init();
 

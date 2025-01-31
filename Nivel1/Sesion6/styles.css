@@ -16,3 +16,11 @@
 .delete-color {
     color: #8c1a3e;
 }
+
+.modal-dialog {
+    max-width: 650px; /* Ajusta según necesites */
+}
+
+.modal-body{
+    overflow-y: auto; /* Agrega scroll si es necesario */
+}

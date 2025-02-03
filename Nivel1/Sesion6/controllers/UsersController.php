@@ -33,6 +33,9 @@ class UsersController {
             case 'load_user':
                 $this->loadUser();
             break;
+            case 'safe_user':
+                $this->safeUser();
+            break;
         }
     }
 
@@ -49,6 +52,23 @@ class UsersController {
         
         echo json_encode($res_arr);
     }
+
+    function safeUser() {
+        $success =  true;
+        $message = 'Datos modificados correctamente';
+
+        try {
+            $result = $this->model->_updateUser($this->params);
+            if ($result === false) { throw new Exception; }
+
+        } catch (Exception $ex) {
+            $success = false;
+            $message = 'Error al modificar el usuario';
+        }
+
+        $response = array('success' => $success , 'message' => $message);
+        echo json_encode($response);
+    }
    
     function registerUser() {
         $success = true;
@@ -57,7 +77,6 @@ class UsersController {
         try {           
             $result = $this->model->_insNewUser($this->params);
             if($result === false) { throw new Exception; }
-
         } catch(Exception $ex){
             $success = false;
             $message = "Error al crear nuevo usuario.";

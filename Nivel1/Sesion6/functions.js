@@ -68,9 +68,45 @@ function editUser(id) {
             renderTableEditUser(r);
         }
     });
+
+   
+    $("#btn-safe").on('click',function() {
+        var data = {
+            serviceType: 'safe_user',
+            id : document.getElementById("editID").textContent,
+            editName: document.getElementById("editName").value,
+            editEmail: document.getElementById("editEmail").value,
+            editAddress: document.getElementById("editAddress").value,
+            editPhone: document.getElementById("editPhone").value
+        }
+
+        
+
+        $.ajax({
+            type: 'POST',
+            url: 'controllers/UsersController.php',
+            data: data,
+            dataType: 'json',
+            success: function (r){
+                swal({
+                    text: r.message,
+                    icon : "info",
+                    button: "Ok"
+                });
+                if (r.success){
+                    $('#modalEdit').modal();
+                    renderTableEditUser(r);
+                } else {
+                    swal({
+                        text: r.message,
+                        icon : "error",
+                        button: "Ok"
+                    });
+                }
+            }
+        })
+    });
 }
-
-
 
 function loadUsers() {
     // Aqui crearemos la peticion ajax para listar los usuarios que tengamos en la tabla de la bd
@@ -245,11 +281,11 @@ function renderTableEditUser(r) {
     html += '<tbody>';
 
     html += '<tr>';
-    html += `<td>${row.IDUser}</td>`;
-    html += `<td><input type="text" value="${row.name}" class="form-control"></td>`;
-    html += `<td><input type="text" value="${row.email}" class="form-control"></td>`;
-    html += `<td><input type="text" value="${row.address}" class="form-control"></td>`;
-    html += `<td><input type="text" value="${row.phoneNumber}" class="form-control"></td>`;
+    html += `<td id="editID">${row.IDUser}</td>`;
+    html += `<td><input id="editName" type="text" value="${row.name}" class="form-control"></td>`;
+    html += `<td><input id="editEmail" type="text" value="${row.email}" class="form-control"></td>`;
+    html += `<td><input id="editAddress" type="text" value="${row.address}" class="form-control"></td>`;
+    html += `<td><input id="editPhone" type="text" value="${row.phoneNumber}" class="form-control"></td>`;
     html += '</tr>';
 
 
@@ -258,5 +294,3 @@ function renderTableEditUser(r) {
 }
 
 init();
-
-

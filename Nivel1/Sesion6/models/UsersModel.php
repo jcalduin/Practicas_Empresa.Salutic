@@ -13,10 +13,6 @@ class UsersModel {
     }
     
     function _getAll() {
-        /*
-            COMPLETAR esta funcion para que nos devuelva el resultSet de la consulta SQL
-            
-        */ 
         $sql = "SELECT * FROM $this->table";
         $resultSet = $this->db_instance->getSQL($sql);
         return $resultSet;
@@ -36,6 +32,20 @@ class UsersModel {
         $sql .= "VALUES (null,'$params->nombre','$params->nick','$params->email','$params->password','$params->direccion','$params->phone','$params->dni')";
         
         return $this->db_instance->execSQL($sql);        
+    }
+
+    function _updateUser($params) {
+        if (!isset($this->db_instance)) {return null;}
+
+        
+        $sql = "UPDATE {$this->table} SET 'name' = $params->editName , 
+                                            'email' = $params->editEmail ,
+                                            'address' = $params->editAddress,
+                                            'phoneNumber' = $params->editPhone WHERE IDUser = $params->id";                  
+        
+        
+        var_dump($params);
+        return $this->db_instance->execSQL($sql);
     }
 
     function _delUser($params){

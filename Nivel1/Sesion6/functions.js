@@ -17,10 +17,10 @@ function setupEventListenersResults(){
     $(".delete-button").on('click',function() {
         var id = $(this).closest('tr').data('id');
 
-        swal({
+        Swal.fire({
             title: 'Desea continuar?',
             text: `Se va borrar el registro con ID: ${id}`,
-            type: 'warning',
+            icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
@@ -28,14 +28,9 @@ function setupEventListenersResults(){
             cancelButtonText: 'Cancelar'
         }).then(function (result) {
             if (result.value) {
-              swal(
-                'Peticion AJAX',
-                'Lanzamos peticion AJAX de borrado',
-                'success'
-              )
+                deleteUser(id);
             }
-          })
-               
+          })       
     });
        
 }
@@ -80,31 +75,22 @@ function editUser(id) {
             editPhone: document.getElementById("editPhone").value
         }
 
-        
-
         $.ajax({
             type: 'POST',
             url: 'controllers/UsersController.php',
             data: data,
             dataType: 'json',
             success: function (r){
-                swal({
+                Swal.fire({
                     text: r.message,
                     icon : "info",
-                    button: "Ok"
+                    confirmButtonText: "Ok"
                 });
-                if (r.success){
-                    $('#modalEdit').modal();
-                    renderTableEditUser(r);
-                } else {
-                    swal({
-                        text: r.message,
-                        icon : "error",
-                        button: "Ok"
-                    });
-                }
+                loadUsers();
+                $('#modalEdit').modal('hide');
             }
         })
+        
     });
 }
 
@@ -158,7 +144,7 @@ function registerUser() {
    
     data = {serviceType: 'register_user', nick: entradaDatos.nick, email: entradaDatos.email, password: entradaDatos.password, nombre: entradaDatos.nombre, direccion: entradaDatos.direccion, phone: entradaDatos.phone, dni: entradaDatos.dni};
     if (entradaDatos.nick == "" || entradaDatos.email == "" || entradaDatos.password == "" || entradaDatos.nombre == "" || entradaDatos.direccion == "" || entradaDatos.phone == "" || entradaDatos.dni == "") {
-        swal ( {
+        Swal.fire ( {
             text: "Por favor, rellene todos los campos.",
             icon: "error",
             button: "Ok"
@@ -172,24 +158,41 @@ function registerUser() {
         data: data,
         dataType: "json",
         success: function (response){
-            swal({
+            Swal.fire({
                 text: response.message,
                 icon : "info",
-                button: "Ok"
+                confirmButtonText: "Ok"
             });
             if (response.success){
                 cleanInputs();
                 loadUsers();
             } else {
-                swal({
+                Swal.fire({
                     text: response.message,
                     icon : "error",
-                    button: "Ok"
+                    confirmButtonText: "Ok"
                 });
             }
         }
     })
     
+}
+
+function deleteUser(id) {
+    data = {
+        serviceType : 'delete_user',
+        id: id
+    }
+
+    $.ajax({
+        type: 'POST',
+        url: 'controllers/UsersController.php',
+        data: data,
+        dataType: 'json',
+        success: function (r) {
+            loadUsers();
+        }
+    });
 }
 
 function cleanInputs() {
@@ -290,7 +293,9 @@ function renderTableEditUser(r) {
 
 
     html += '</tbody></table>';
+
     document.querySelector('#contenidoModalEdit').innerHTML = html; 
+
 }
 
 init();

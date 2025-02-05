@@ -1,0 +1,41 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 17-nov-2018, 10:55:32
+    Author     : Alberto TM
+*/
+
+.swal2-popup {
+  font-size: 1.6rem !important;
+}
+
+.table-active-main {
+    background-color: #3c3c3c !important;
+    color: #e7e7e7 !important;
+}
+
+.edit-color {
+    color: #bf800c !important;
+}
+
+.delete-color {
+    color: #9c3328 !important;
+}
+
+.shopcart-color {
+    color: #aaad32 !important;
+}
+
+.txt-center {
+    text-align: center !important;
+}
+
+.clickable {
+    cursor: pointer;
+}
+
+
+

@@ -38,13 +38,12 @@ class UsersModel {
         if (!isset($this->db_instance)) {return null;}
 
         
-        $sql = "UPDATE {$this->table} SET 'name' = $params->editName , 
-                                            'email' = $params->editEmail ,
-                                            'address' = $params->editAddress,
-                                            'phoneNumber' = $params->editPhone WHERE IDUser = $params->id";                  
-        
-        
-        var_dump($params);
+        $sql = "UPDATE {$this->table} SET name = '$params->editName' , 
+                                            email = '$params->editEmail' ,
+                                            address = '$params->editAddress',
+                                            phoneNumber = '$params->editPhone' WHERE IDUser = $params->id";                  
+
+
         return $this->db_instance->execSQL($sql);
     }
 

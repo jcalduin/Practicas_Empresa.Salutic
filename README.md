@@ -8,6 +8,7 @@
   <li>Manipulación de formularios</li>
   <li>Manipulación de formularios a través de peticiones AJAX y conexión con el servidor local</li>
   <li>Ejercicios Modelo Vista Controlador (MVC)</li>
+  <li>Control de formularios con modalidad CRUD</li>
 </ol>
 
 <p>Es necesario utilizar un entorno de desarrollo local como XAMPP o Laragon</p>

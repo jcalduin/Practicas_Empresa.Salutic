@@ -27,16 +27,33 @@ class UsersController {
             case 'register_user':
                 $this->registerUser();
             break;
-            case 'delete-user':
-            $this->deleteUser();
-            break;
             case 'load_user':
                 $this->loadUser();
             break;
             case 'safe_user':
                 $this->safeUser();
             break;
+            case 'delete_user':
+                $this->deleteUser();
+            break;
         }
+    }
+
+    function deleteUser() {
+        $success =  true;
+        $message = 'Usuario eliminado correctamente';
+
+        try {
+            $result = $this->model->_delUser($this->params);
+            if ($result === false) { throw new Exception; }
+
+        } catch (Exception $ex) {
+            $success = false;
+            $message = 'Error al borrar el usuario';
+        }
+
+        $response = array('success' => $success , 'message' => $message);
+        echo json_encode($response);
     }
 
     function loadUsers() {
@@ -86,20 +103,4 @@ class UsersController {
         echo json_encode($response);
     }
 
-    function deleteUser() {
-        $success = true;
-        $message = 'Usuario creado correctamente';
-        
-        try {           
-            $result = $this->model->_delUser($this->params);
-            if($result === false) { throw new Exception; }
-
-        } catch(Exception $ex){
-            $success = !$success;
-            $message = "Error al crear nuevo usuario.";
-        }
-               
-        $response = array('success' => $success , 'message' => $message);
-        echo json_encode($response);
-    }
 }

@@ -1,3 +1,4 @@
+<!-- header de la aplicación aqui se insertan algunos script, hojas de stilo y conexion con bootstraap y sweet alert -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,7 +21,7 @@
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="dashboard/dist/css/skins/_all-skins.min.css">
-  <script src="../vendor/sweetalert_dist/sweetalert2.all.min.js" type="text/javascript"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <link href="css/styles.css" rel="stylesheet" type="text/css"/>
 </head>
 

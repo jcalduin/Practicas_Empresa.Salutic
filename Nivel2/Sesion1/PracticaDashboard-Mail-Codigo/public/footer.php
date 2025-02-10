@@ -1,4 +1,4 @@
-
+<!-- Footer de la aplicación se conectan tmbn los script -->
   <footer class="main-footer">
     <div class="pull-right hidden-xs">
         <small>Copyright © 2018. Alberto Tirado Mata. Todos los derechos reservados. </small>     

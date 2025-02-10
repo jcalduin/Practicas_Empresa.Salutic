@@ -24,44 +24,27 @@
         
         <div id="renderTable-edit-products">
             
-            <table class="table table-hover">
-                <thead>
-                  <tr class="table-active-main">
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Descripcion</th>
-                    <th scope="col">Precio</th>
-                    <th scope="col">Stock</th>
-                    <th scope="col">Editar</th>
-                    <th scope="col">Borrar</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>Call Of Duty Black OPS 4</td>
-                    <td>Juego de disparos y tal...</td>
-                    <td>55.95</td>
-                    <td>12</td>
-                    <td class="txt-center"><i class="fa fa-edit fa-lg edit-color clickable"></i></td>
-                    <td class="txt-center"><i class="fa fa-trash fa-lg delete-color clickable"></i></td>
-                  </tr>
-                  <tr>
-                    <td>Interstellar</td>
-                    <td>Pelicula de viajes interdimensionales y mas cosas...</td>
-                    <td>17.95</td>
-                    <td>4</td>
-                    <td class="txt-center"><i class="fa fa-edit fa-lg edit-color clickable"></i></td>
-                    <td class="txt-center"><i class="fa fa-trash fa-lg delete-color clickable"></i></td>
-                  </tr>
-                  <tr>
-                    <td>TYR - By the Light of the Northern Star</td>
-                    <td>Musica folk noruega de pachangueo...</td>
-                    <td>11.95</td>
-                    <td>7</td>
-                    <td class="txt-center"><i class="fa fa-edit fa-lg edit-color clickable"></i></td>
-                    <td class="txt-center"><i class="fa fa-trash fa-lg delete-color clickable"></i></td>
-                  </tr>
-                </tbody>
-             </table>
+
+        </div>
+         <!-- ventana modal en la que se mostrara la vista correspondiente una vez se pinche en el boton editar -->
+        <div class="modal" id="modalEdit" tabindex="-1" role="dialog">
+          <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <h5 class="modal-title">Editar producto</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                      </button>
+                  </div>
+                  <div class="modal-body">
+                      <span id="contenidoModalEdit"></span>
+                  </div>
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                      <button type="button" id="btn-safe" class="btn btn-primary" onclick="safeEdit()">Guardar Cambios</button>
+                  </div>
+              </div>
+          </div>
         </div>
        
         
@@ -69,6 +52,7 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+   <!-- conexion con el script correspondiente con el trabajara esta vista -->
   <script src="js/func.edit.products.js" type="text/javascript"></script>
   
 

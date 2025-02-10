@@ -4,7 +4,7 @@ class UsersModel {
     
     private $table = "users";
     private $fields = array(
-        "IDUser","name","nick","password","address","phoneNumber","dni"
+        "IDUser","name","nick","email","password","address","phoneNumber","dni"
     );
     
     private $db_instance;   
@@ -28,7 +28,7 @@ class UsersModel {
         
     
         $sql = "INSERT INTO {$this->table} (".implode(",",$this->fields).")";
-        $sql .= "VALUES (null,'$params->nombre','$params->nick','$params->password','$params->direccion','$params->phone','$params->dni')";
+        $sql .= "VALUES (null,'$params->nombre','$params->nick','$params->email','$params->password','$params->direccion','$params->phone','$params->dni')";
 
         return $this->db_instance->execSQL($sql);        
     }

@@ -37,5 +37,19 @@ and open the template in the editor.
     cursor: pointer;
 }
 
+.modal-dialog {
+    width: 750px;
+}
 
+/*estilos extras añadidos como por ejemplo para una de los input en el render table de editar producto*/
+#contenidoModalEdit #editDescription {
+    transition: all 0.3s ease-in-out;
+}
 
+#contenidoModalEdit #editDescription:focus {
+    width: 350px;
+}
+
+.hidden {
+    display:none;
+}

@@ -1,4 +1,5 @@
   <!-- =============================================== -->
+   <!-- BARRA DE NAVEGACIÓN -->
 
   <!-- Left side column. contains the sidebar -->
   <aside class="main-sidebar">
